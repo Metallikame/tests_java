@@ -14,11 +14,11 @@ public class Main {
         if (heure >= 6 && heure < 12) {
             System.out.println("Bonjour");
         } else if (heure >= 12 && heure < 18){
-            System.out.println("Bon après midi");
+            System.out.println("Tu as bien mangé ce midi ?");
         } else if (heure >= 18 && heure < 22){
-            System.out.println("Bonne soirée");
+            System.out.println("Ton après midi s'est bien passé ?");
         } else {
-            System.out.println("Bonne nuit");
+            System.out.println("Va dormir");
         }
         
         //print en miroir
@@ -33,6 +33,20 @@ public class Main {
             System.out.println("Bien dit !");
         } else {
             System.out.println("Voici votre mot à l'envers : " + reversedStr);
+        }
+
+        //Au revoir selon l'heure
+        LocalTime heureActuellement = LocalTime.now();
+        int heure2 = heureActuelle.getHour();
+
+        if (heure2 >= 6 && heure2 < 12) {
+            System.out.println("Profite bien de ta matinée !");
+        } else if (heure2 >= 12 && heure2 < 18) {
+            System.out.println("Bon après midi");
+        } else if (heure2 >= 18 && heure2 < 22) {
+            System.out.println("Bonne soirée");
+        } else {
+            System.out.println("Va dormir");
         }
     }
 }
