@@ -18,10 +18,40 @@ class MainTest {
 
         // Test pour l'heure du matin (entre 6h et 12h)
         LocalTime timeMorning = LocalTime.of(9, 0); // Modifier l'heure selon le test
-        LocalTime now = LocalTime.now();
+        LocalTime nowMorning = LocalTime.now();
         Main.greetMessage(timeMorning);
-        if (now.isAfter(timeMorning.minusMinutes(1)) && now.isBefore(timeMorning.plusMinutes(1))) {
+        if (nowMorning.isAfter(timeMorning.minusMinutes(1)) && nowMorning.isBefore(timeMorning.plusMinutes(1))) {
             assertEquals("Bonjour\n", outContent.toString());
+        }
+
+        outContent.reset();
+
+        // Test pour l'heure de l'après-midi (entre 12h et 18h)
+        LocalTime timeAfternoon = LocalTime.of(15, 0); // Modifier l'heure selon le test
+        LocalTime nowAfternoon = LocalTime.now();
+        Main.greetMessage(timeAfternoon);
+        if (nowAfternoon.isAfter(timeAfternoon.minusMinutes(1)) && nowAfternoon.isBefore(timeAfternoon.plusMinutes(1))) {
+            assertEquals("Tu as bien mangé ce midi ?\n", outContent.toString());
+        }
+
+        outContent.reset();
+
+        // Test pour l'heure du soir (entre 18h et 22h)
+        LocalTime timeEvening = LocalTime.of(20, 0); // Modifier l'heure selon le test
+        LocalTime nowEvening = LocalTime.now();
+        Main.greetMessage(timeEvening);
+        if (nowEvening.isAfter(timeEvening.minusMinutes(1)) && nowEvening.isBefore(timeEvening.plusMinutes(1))) {
+            assertEquals("Ton après midi s'est bien passé ?\n", outContent.toString());
+        }
+
+        outContent.reset();
+
+        // Test pour l'heure de nuit (après 22h ou avant 6h)
+        LocalTime timeNight = LocalTime.of(23, 0); // Modifier l'heure selon le test
+        LocalTime nowNight = LocalTime.now();
+        Main.greetMessage(timeNight);
+        if (nowNight.isAfter(timeNight.minusMinutes(1)) || nowNight.isBefore(LocalTime.of(6, 0))) {
+            assertEquals("Va dormir\n", outContent.toString());
         }
 
         System.setOut(System.out);
@@ -72,12 +102,42 @@ class MainTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
+        // Test pour l'heure du matin (entre 6h et 12h)
+        LocalTime timeMorning = LocalTime.of(9, 0); // Modifier l'heure selon le test
+        LocalTime nowMorning = LocalTime.now();
+        Main.farewellMessage(timeMorning);
+        if (nowMorning.isAfter(timeMorning.minusMinutes(1)) && nowMorning.isBefore(timeMorning.plusMinutes(1))) {
+            assertEquals("Profite bien de ta matinée !\n", outContent.toString());
+        }
+
+        outContent.reset();
+
+        // Test pour l'heure de l'après-midi (entre 12h et 18h)
+        LocalTime timeAfternoon = LocalTime.of(15, 0); // Modifier l'heure selon le test
+        LocalTime nowAfternoon = LocalTime.now();
+        Main.farewellMessage(timeAfternoon);
+        if (nowAfternoon.isAfter(timeAfternoon.minusMinutes(1)) && nowAfternoon.isBefore(timeAfternoon.plusMinutes(1))) {
+            assertEquals("Bon après midi\n", outContent.toString());
+        }
+
+        outContent.reset();
+
         // Test pour l'heure du soir (entre 18h et 22h)
         LocalTime timeEvening = LocalTime.of(20, 0); // Modifier l'heure selon le test
-        LocalTime now = LocalTime.now();
+        LocalTime nowEvening = LocalTime.now();
         Main.farewellMessage(timeEvening);
-        if (now.isAfter(timeEvening.minusMinutes(1)) && now.isBefore(timeEvening.plusMinutes(1))) {
+        if (nowEvening.isAfter(timeEvening.minusMinutes(1)) && nowEvening.isBefore(timeEvening.plusMinutes(1))) {
             assertEquals("Bonne soirée\n", outContent.toString());
+        }
+
+        outContent.reset();
+
+        // Test pour l'heure de nuit (après 22h ou avant 6h)
+        LocalTime timeNight = LocalTime.of(23, 0); // Modifier l'heure selon le test
+        LocalTime nowNight = LocalTime.now();
+        Main.farewellMessage(timeNight);
+        if (nowNight.isAfter(timeNight.minusMinutes(1)) || nowNight.isBefore(LocalTime.of(6, 0))) {
+            assertEquals("Va dormir\n", outContent.toString());
         }
 
         System.setOut(System.out);
