@@ -5,19 +5,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        // Salutation selon l'heure
-        greetMessage();
-
-        // Print en miroir
-        reverseString();
-
-        // Au revoir selon l'heure
-        farewellMessage();
-    }
-
     // Méthode pour obtenir le message de salutation en fonction de l'heure
-    public static void greetMessage() {
+    public static void greetMessage(LocalTime timeMorning) {
         LocalTime heureActuelle = LocalTime.now();
         int heure = heureActuelle.getHour();
 
@@ -35,7 +24,7 @@ public class Main {
     // Méthode pour inverser une chaîne de caractères et vérifier si c'est un palindrome
     public static void reverseString() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Veuillez saisir un mot :");
+        //System.out.println("Veuillez saisir un mot :");
         String str = sc.nextLine();
         StringBuilder sb = new StringBuilder();
         sb.append(str);
@@ -50,7 +39,7 @@ public class Main {
     }
 
     // Méthode pour obtenir le message de départ en fonction de l'heure
-    public static void farewellMessage() {
+    public static void farewellMessage(LocalTime timeEvening) {
         LocalTime heureActuellement = LocalTime.now();
         int heure2 = heureActuellement.getHour();
 
